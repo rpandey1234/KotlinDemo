@@ -22,10 +22,31 @@ fun main() {
     otherFriends[0] = "June"
     // otherFriends = mutableListOf("Summer", "Ram") - not allowed
 
+    // Null safety
+    findFriendScore(friends)
+    findFriendScore(null)
+
     // Extension function
     println(myList.secondToLast())
     println(friends.secondToLast())
+}
 
+/**
+ * Compute the total length of all strings in the list
+ */
+fun findFriendScore(friends: List<String>?): Int? {
+    // friends.size
+    if (friends == null) {
+        return null
+    }
+    var score = 0
+    for (friend in friends) {
+        score += friend.length
+    }
+    println(score)
+    val score2 = friends.sumBy { friend -> friend.length }
+    println(score2)
+    return score
 }
 
 // Extension functions
